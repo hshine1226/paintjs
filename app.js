@@ -5,7 +5,8 @@ const range = document.querySelector("#jsRange");
 const mode = document.querySelector("#jsMode");
 const save = document.querySelector("#jsSave");
 const clear = document.querySelector("#jsClear");
-let previousTarget = null;
+
+let previousTarget = colors[0];
 
 const INITIAL_COLOR = "#2d3436";
 const CANVAS_SIZE = "700";
