@@ -3,6 +3,7 @@ const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("jsColor");
 const range = document.querySelector("#jsRange");
 const mode = document.querySelector("#jsMode");
+const save = document.querySelector("#jsSave");
 
 const INITIAL_COLOR = "#2d3436";
 const CANVAS_SIZE = "700";
@@ -74,6 +75,17 @@ function handleCM(event) {
   console.log(event);
   event.preventDefault();
 }
+
+/*save 버튼을 클릭했을 때, 이미지를 저장하는 기능 
+a 태크에 다운로드 링크를 만들고
+fake click을 만들어서 이미지를 다운로드할 수 있다.*/
+function handleSaveClick() {
+  const fullQualityImage = canvas.toDataURL("image/png", 1.0);
+  const link = document.createElement("a");
+  link.download = "image.png";
+  link.href = fullQualityImage;
+  link.click();
+}
 if (canvas) {
   canvas.addEventListener("mousemove", onMouseMove);
   canvas.addEventListener("mousedown", startPainting);
@@ -93,4 +105,8 @@ if (range) {
 
 if (mode) {
   mode.addEventListener("click", handleModeClick);
+}
+
+if (save) {
+  save.addEventListener("click", handleSaveClick);
 }
