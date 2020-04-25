@@ -2,7 +2,9 @@
 
 > VanillaJS로 만든 그림판
 
-VanillaJS로 Painting Board 만들기
+VanillaJS로 Painting Board 만들기 프로젝트
+
+<center><img src="header.png" width="50%" height="50%"></center>
 
 ## 기능
 
@@ -16,4 +18,4 @@ VanillaJS로 Painting Board 만들기
 
 ## 링크
 
-PaintJS: <https://hshine1226.github.io/paintjs>
+PaintJS: <https://hshine1226.github.io/paintjs/>
