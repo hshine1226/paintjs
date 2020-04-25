@@ -1,7 +1,8 @@
 const canvas = document.querySelector("#jsCanvas");
 const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("jsColor");
-
+const range = document.querySelector("#jsRange");
+const mode = document.querySelector("#jsMode");
 /*캔버스의 크기를 지정해줘야 한다.*/
 canvas.width = 700;
 canvas.height = 700;
@@ -37,6 +38,19 @@ function handleColorClick(event) {
   console.log(ctx.strokeStyle);
 }
 
+function handleRangeChange(event) {
+  width = event.target.value;
+  ctx.lineWidth = width;
+}
+
+function handleModeClick(event) {
+  if (mode.innerText == "Draw") {
+    mode.innerText = "Fill";
+  } else {
+    mode.innerText = "Draw";
+  }
+}
+
 if (canvas) {
   canvas.addEventListener("mousemove", onMouseMove);
   canvas.addEventListener("mousedown", startPainting);
@@ -47,3 +61,11 @@ if (canvas) {
 Array.from(colors).forEach((color) =>
   color.addEventListener("click", handleColorClick)
 );
+
+if (range) {
+  range.addEventListener("input", handleRangeChange);
+}
+
+if (mode) {
+  mode.addEventListener("click", handleModeClick);
+}
