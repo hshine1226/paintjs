@@ -12,3 +12,8 @@ VanillaJS로 Painting Board 만들기
 - 캔버스 색 채우기
 - 캔버스 화면 지우기
 - 이미지 저장하기
+- 마우스 포인터 모양 변경
+
+## 링크
+
+PaintJS: <https://hshine1226.github.io/paintjs>
