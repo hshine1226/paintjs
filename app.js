@@ -4,6 +4,7 @@ const colors = document.getElementsByClassName("jsColor");
 const range = document.querySelector("#jsRange");
 const mode = document.querySelector("#jsMode");
 const save = document.querySelector("#jsSave");
+const clear = document.querySelector("#jsClear");
 
 const INITIAL_COLOR = "#2d3436";
 const CANVAS_SIZE = "700";
@@ -86,6 +87,11 @@ function handleSaveClick() {
   link.href = fullQualityImage;
   link.click();
 }
+
+function handleClearClick() {
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+}
 if (canvas) {
   canvas.addEventListener("mousemove", onMouseMove);
   canvas.addEventListener("mousedown", startPainting);
@@ -109,4 +115,8 @@ if (mode) {
 
 if (save) {
   save.addEventListener("click", handleSaveClick);
+}
+
+if (clear) {
+  clear.addEventListener("click", handleClearClick);
 }
