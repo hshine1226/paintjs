@@ -1,4 +1,5 @@
 @import "reset.css";
+@import "range.css";
 body {
   background-color: #b2bec3;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
