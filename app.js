@@ -12,9 +12,12 @@ let filling = true;
 canvas.width = CANVAS_SIZE;
 canvas.height = CANVAS_SIZE;
 
+/*캔버스의 배경색 지정*/
+ctx.fillStyle = "white";
+ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+
 ctx.strokeStyle = INITIAL_COLOR;
 ctx.lineWidth = 2.5;
-
 ctx.fillStyle = INITIAL_COLOR;
 
 let painting = false;
@@ -62,16 +65,22 @@ function handleModeClick(event) {
 
 function handleCanvasClick() {
   if (!filling) {
-    ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZEr);
+    ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
   }
 }
 
+/*우클릭 방지 기능*/
+function handleCM(event) {
+  console.log(event);
+  event.preventDefault();
+}
 if (canvas) {
   canvas.addEventListener("mousemove", onMouseMove);
   canvas.addEventListener("mousedown", startPainting);
   canvas.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseleave", stopPainting);
   canvas.addEventListener("click", handleCanvasClick);
+  canvas.addEventListener("contextmenu", handleCM);
 }
 
 Array.from(colors).forEach((color) =>
