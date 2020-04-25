@@ -1,9 +1,14 @@
 const canvas = document.querySelector("#jsCanvas");
 const ctx = canvas.getContext("2d");
+const colors = document.getElementsByClassName("jsColor");
+
+/*캔버스의 크기를 지정해줘야 한다.*/
 canvas.width = 700;
 canvas.height = 700;
-ctx.strockStyle = "#2d3436";
+
+ctx.strokeStyle = "#2d3436";
 ctx.lineWidth = 2.5;
+
 let painting = false;
 
 function stopPainting() {
@@ -13,6 +18,7 @@ function stopPainting() {
 function startPainting() {
   painting = true;
 }
+
 function onMouseMove(event) {
   const x = event.offsetX,
     y = event.offsetY;
@@ -22,12 +28,13 @@ function onMouseMove(event) {
   } else {
     ctx.lineTo(x, y);
     ctx.stroke();
-    // ctx.closePath();
   }
 }
 
-function onMouseDown(event) {
-  painting = true;
+function handleColorClick(event) {
+  const color = event.target.style.backgroundColor;
+  ctx.strokeStyle = color;
+  console.log(ctx.strokeStyle);
 }
 
 if (canvas) {
@@ -36,3 +43,7 @@ if (canvas) {
   canvas.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseleave", stopPainting);
 }
+
+Array.from(colors).forEach((color) =>
+  color.addEventListener("click", handleColorClick)
+);
