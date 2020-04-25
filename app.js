@@ -5,6 +5,7 @@ const range = document.querySelector("#jsRange");
 const mode = document.querySelector("#jsMode");
 const save = document.querySelector("#jsSave");
 const clear = document.querySelector("#jsClear");
+let previousTarget = null;
 
 const INITIAL_COLOR = "#2d3436";
 const CANVAS_SIZE = "700";
@@ -46,6 +47,18 @@ function onMouseMove(event) {
 
 function handleColorClick(event) {
   const color = event.target.style.backgroundColor;
+  const currentTarget = event.target;
+  if (previousTarget) {
+    if (previousTarget !== currentTarget) {
+      previousTarget.style.border = "none";
+      currentTarget.style.border = "solid #ffa801 3px";
+      previousTarget = currentTarget;
+    }
+  } else {
+    currentTarget.style.border = "solid #ffa801 3px";
+    previousTarget = currentTarget;
+  }
+
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
 }
@@ -91,6 +104,7 @@ function handleSaveClick() {
 function handleClearClick() {
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+  ctx.fillStyle = previousTarget.style.backgroundColor;
 }
 if (canvas) {
   canvas.addEventListener("mousemove", onMouseMove);
